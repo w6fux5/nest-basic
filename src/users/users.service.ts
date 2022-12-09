@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './users.entity';
@@ -13,7 +17,14 @@ export class UsersService {
   }
 
   findOne(id: string) {
+    if (!id) {
+      throw new BadRequestException('no id');
+    }
     return this.repo.findOneBy({ id });
+  }
+
+  findOneByEmail(email: string) {
+    return this.repo.findOneBy({ email });
   }
 
   find(email: string) {
