@@ -1,0 +1,29 @@
+### Signup
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "12323242356"
+}
+
+### Find User by id
+GET http://localhost:8080/auth/f678ce50-d236-4465-81ea-5b65005e8424
+Content-Type: application/json
+
+### Find All user by email
+GET http://localhost:8080/auth?email=test@gmail.com
+Content-Type: application/json
+
+### Delete User by id
+DELETE http://localhost:8080/auth/0754255a-d07e-4ce2-864e-fb91084615fa
+Content-Type: application/json
+
+
+### Update User by id (給什麼就更新什麼，沒有給的就保持舊的)
+PATCH http://localhost:8080/auth/f678ce50-d236-4465-81ea-5b65005e8424
+Content-Type: application/json
+
+{
+    "email": "aaa@gmail.com"
+}
