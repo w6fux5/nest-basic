@@ -20,8 +20,8 @@ export class AuthService {
 
   async register({ email, password }: AuthProp) {
     // See if email is in use
-    const existsUser = await this.usersService.find(email);
-    if (existsUser.length) {
+    const existsUser = await this.usersService.findOneByEmail(email);
+    if (existsUser) {
       throw new BadRequestException('email in use');
     }
 

@@ -1,3 +1,15 @@
+/*=============================================
+   1. 攔截請求，拿到 request session 裡面的 userID
+   2. 利用 userID 拿到 user entity
+   3. 將 user entity 加到 request 的 currentUser
+   4. 因為執行順序的關係，改為使用 middleware
+   5. request => middleware => guard 
+      => interceptor => request handler
+      => interceptor => response
+   6. 如果 currentUser在攔截器添加，guard 會拿不到
+      數據，因此改成 middleware 
+=============================================*/
+
 import {
   NestInterceptor,
   ExecutionContext,

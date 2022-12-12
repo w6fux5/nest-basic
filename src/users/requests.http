@@ -3,7 +3,7 @@ POST http://localhost:8080/auth/register
 Content-Type: application/json
 
 {
-    "email": "jack@gamil.com",
+    "email": "mike@gmail.com",
     "password": "123456"
 }
 
@@ -12,7 +12,7 @@ POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
-    "email": "jack@gamil.com",
+    "email": "mike@gmail.com",
     "password": "123456"
 }
 
@@ -21,7 +21,7 @@ POST http://localhost:8080/auth/Logout
 Content-Type: application/json
 
 ### Get Current User
-GET http://localhost:8080/auth/whoami
+GET http://localhost:8080/auth/me
 Content-Type: application/json
 
 ### Find User by id
@@ -30,6 +30,10 @@ Content-Type: application/json
 
 ### Find All user by email
 GET http://localhost:8080/auth?email=test@gmail.com
+Content-Type: application/json
+
+### Find one user by email
+GET http://localhost:8080/auth/user?email=mike@gmail.com
 Content-Type: application/json
 
 ### Delete User by id

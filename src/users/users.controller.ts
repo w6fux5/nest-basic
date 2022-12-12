@@ -16,11 +16,11 @@ import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 
-import { AuthGuard } from 'src/guard/auth.guard';
+import { AuthGuard } from '../guard/auth.guard';
 
 import { CurrentUser } from './decorators/current-user.decorator';
 
-import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthService } from './auth.service';
 import { User } from './users.entity';
 
@@ -61,14 +61,15 @@ export class UsersController {
     session.userID = null;
   }
 
-  // @Get('/whoami')
-  // whoAmI(@Session() session: any) {
-  //   return this.usersService.findOne(session.userID);
-  // }
-
-  @Get('/whoami')
+  @Get('/me')
   @UseGuards(AuthGuard)
   whoAmI(@CurrentUser() user: User) {
+    return user;
+  }
+
+  @Get('/user')
+  async fineOneUserByEmail(@Query('email') email: string) {
+    const user = await this.usersService.findOneByEmail(email);
     return user;
   }
 
